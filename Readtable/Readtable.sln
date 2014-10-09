@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Readtable", "Readtable.csproj", "{2737D904-315B-4697-8623-5D996B7C83F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2737D904-315B-4697-8623-5D996B7C83F2}.Debug|x86.ActiveCfg = Debug|x86
+		{2737D904-315B-4697-8623-5D996B7C83F2}.Debug|x86.Build.0 = Debug|x86
+		{2737D904-315B-4697-8623-5D996B7C83F2}.Release|x86.ActiveCfg = Release|x86
+		{2737D904-315B-4697-8623-5D996B7C83F2}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Readtable.csproj
+	EndGlobalSection
+EndGlobal
