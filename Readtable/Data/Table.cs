@@ -20,7 +20,7 @@ namespace Readtable
 		{ 
 			filename = path; 
 			if (filename == null || filename == string.Empty || !File.Exists (filename)) {
-				return ;
+				return;
 			}  
 			datfile = filename.Replace (".txt", ".dat"); 
 			binfile = filename.Replace (".txt", ".bin");
@@ -29,13 +29,14 @@ namespace Readtable
 			string fields = reader.ReadLine ();  
 			Logger.D (string.Format ("Load table: {0} \nwith fields: {1}.", filename, fields)); 
 			string table = reader.ReadToEnd ();  
+			reader.Close();
 			stream.Close ();  
 			string[] strRecords = table.Split (new string[1] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);    
 			foreach (string record in strRecords) {
 				R r = new R ();
-				if (!　r.Parse (record)) {
-				}　
-				records [r.Key ()] = r; 
+				if (r.Parse (record)) {
+					records [r.Key ()] = r;
+				}
 			}
 		}
 		
@@ -57,10 +58,7 @@ namespace Readtable
 			records = null;
 			Stream s = File.Open (datfile, FileMode.Open);		
 			BinaryFormatter formatter = new BinaryFormatter ();
-			records = formatter.Deserialize (s) as Dictionary<K, R>;   
-			foreach (K k in records.Keys) {
-				R r = records [k]; 
-			} 
+			records = formatter.Deserialize (s) as Dictionary<K, R>; 
 			s.Close ();  
 		}
 		
@@ -75,6 +73,7 @@ namespace Readtable
 				R r = records [k];
 				r.Save (ref writer);
 			} 
+			writer.Close ();
 			s.Close ();
 		}
 		
@@ -90,6 +89,7 @@ namespace Readtable
 				r.Read (ref reader); 
 				records [r.Key ()] = r;
 			}
+			reader.Close ();
 			s.Close ();
 		}
 	}
