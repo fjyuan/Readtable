@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.IO; 
+using System.IO;
+using System.Reflection; 
 
 namespace Readtable
 {  
@@ -8,6 +9,16 @@ namespace Readtable
 	{
 		public static void Main (string[] args)
 		{ 
+			RecordGenerater.Generater("Actor", new Field[] { 
+				new Field(){ type = typeof(uint), name = "id"},
+				new Field(){ type = typeof(string), name = "name"},
+				new Field(){ type = typeof(string), name = "desc"}, 
+			});
+			RecordGenerater.Generater("Monster", new Field[] { 
+				new Field(){ type = typeof(uint), name = "id"},
+				new Field(){ type = typeof(string), name = "name"},
+				new Field(){ type = typeof(string), name = "desc"}, 
+			});
 			string filename = "../../test.txt"; 
 			Table<uint, TestRecord> testTable = null;
 			TimeConsumed ("LoadTable", delegate() {
@@ -24,8 +35,7 @@ namespace Readtable
 			}); 
 			TimeConsumed ("LoadBinary", delegate() {
 				testTable.LoadBinary ();
-			});
-			
+			}); 
 		}
 		
 		public delegate void Callback ();
