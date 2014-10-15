@@ -46,12 +46,12 @@ namespace Readtable
 		{
 		}
 
-		public static void Generater (string name, Field[] fields)
+		public static void Generate (string recordName, Field[] recordFields)
 		{
-			string filename = "..\\..\\Data\\Records\\" + name + ".cs";
+			string filename = "..\\..\\Data\\Records\\" + recordName + ".cs";
 			Stream stream = File.Open (filename, FileMode.Create);
 			StreamWriter writer = new StreamWriter (stream);
-			Field keyField = fields [0]; 
+			Field keyField = recordFields [0]; 
 			//file-began
 			writer.WriteLine ("using System; ");
 			writer.WriteLine ("using System.Reflection; ");
@@ -61,11 +61,11 @@ namespace Readtable
 			//class 
 			string indent = "\t"; 
 			writer.WriteLine (indent + "[Serializable]");
-			writer.WriteLine (indent + "public class " + name + ": IRecord<" + keyField.type.Name + ">");
+			writer.WriteLine (indent + "public class " + recordName + ": IRecord<" + keyField.type.Name + ">");
 			writer.WriteLine (indent + "{"); 
 			indent = "\t\t"; 
 			//fields
-			foreach (Field f in fields) { 
+			foreach (Field f in recordFields) { 
 				writer.WriteLine (indent + "public " + f.type + " " + f.name + ";");
 			}  
 			//methods
@@ -80,7 +80,7 @@ namespace Readtable
 			writer.WriteLine (indent + "\t}"); 
 			int i = 0;
 			string fieldsStr = null;
-			foreach (Field f in fields) {
+			foreach (Field f in recordFields) {
 				if (f.type == typeof(string)) {
 					writer.WriteLine (indent + "\t" + f.name + "=fields[" + i + "];");
 				} else {
@@ -98,7 +98,7 @@ namespace Readtable
 			#region Save
 			writer.WriteLine (indent + "public void Save (ref BinaryWriter writer)"); 
 			writer.WriteLine (indent + "{");
-			foreach (Field f in fields) {
+			foreach (Field f in recordFields) {
 				writer.WriteLine (indent + "\twriter.Write(" + f.name + ");");
 			} 
 			writer.WriteLine (indent + "}");
@@ -115,7 +115,7 @@ namespace Readtable
 					nameDict.Add (m.ReturnType.Name, m.Name);
 				}
 			}  
-			foreach (Field f in fields) { 
+			foreach (Field f in recordFields) { 
 				writer.WriteLine (indent + "\t" + f.name + " = reader." + nameDict [f.type.Name] + "();");
 			} 
 			writer.WriteLine (indent + "}");

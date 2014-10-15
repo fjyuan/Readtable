@@ -9,12 +9,12 @@ namespace Readtable
 	{
 		public static void Main (string[] args)
 		{ 
-			RecordGenerater.Generater("Actor", new Field[] { 
+			RecordGenerater.Generate("Actor", new Field[] { 
 				new Field(){ type = typeof(uint), name = "id"},
 				new Field(){ type = typeof(string), name = "name"},
 				new Field(){ type = typeof(string), name = "desc"}, 
 			});
-			RecordGenerater.Generater("Monster", new Field[] { 
+			RecordGenerater.Generate("Monster", new Field[] { 
 				new Field(){ type = typeof(uint), name = "id"},
 				new Field(){ type = typeof(string), name = "name"},
 				new Field(){ type = typeof(string), name = "desc"}, 

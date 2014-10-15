@@ -1,12 +1,6 @@
 ﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AssemblyInfo.cs">
-    <Files>
-      <File FileName="AssemblyInfo.cs" Line="11" Column="38" />
-      <File FileName="Data\Table.cs" Line="26" Column="31" />
-      <File FileName="Data\TableGenerator.cs" Line="17" Column="4" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
