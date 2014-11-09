@@ -20,4 +20,4 @@ Monodevelop v4.0.1
 
 # 注意事项
 1. 对于该程序的性能测试，还不是很稳定，具体表现为，在不改变代码和资源的情况下，分别运行几次，然后改程序在控制台的输出结果都不同
-1. 使用RecordGenerater->Generate之后生成的表记录会保存到工程更目录下的Data/Records/下，不会直接添加到工程中去
+1. 使用RecordGenerater->Generate之后生成的表记录会保存到工程更目录下的Data/Records/下，不会直接添加到工程中去，可以在Monodevelop中自定义解决方案／项目的选项，自动添加
